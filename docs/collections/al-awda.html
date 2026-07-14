@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://www.elfatina.ma/collections/al-awda.html">
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/showroom.css">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ELFATINA الفاتنة">
   <meta property="og:title" content="مجموعة العودة | الفاتنة">
@@ -135,6 +136,36 @@
     </div>
   </section>
 
+  <!-- ============ 3D SHOWROOM ============ -->
+  <section class="block tinted" id="showroom">
+    <div class="wrap">
+      <div class="sect-head reveal">
+        <span class="label ar">جديد · صالة العرض</span>
+        <h2 class="display">شاهديها تدور أمامكِ</h2>
+        <p>اختاري القطعة، واسحبي العارضة لتدور بها — كأنكِ داخل المحل.</p>
+      </div>
+      <div class="showroom reveal">
+        <div class="stage-wrap">
+          <div id="stage3d" aria-label="عرض ثلاثي الأبعاد للعباية على عارضة تدور"></div>
+          <p class="drag-hint">✦ اسحبي بالفأرة أو بإصبعك لتدويرها ✦</p>
+        </div>
+        <div class="showroom-side">
+          <span class="label ar">على العارضة الآن</span>
+          <h3 class="display" id="sr-name">عباية الصحراء</h3>
+          <p id="sr-desc">سوداء بامتداد الليل، يشقّها شريط ذهبي مطرز من العنق إلى الأرض.</p>
+          <div class="showroom-chips">
+            <button type="button" data-model="sahara" class="on">الصحراء</button>
+            <button type="button" data-model="sakina">السَّكِينة</button>
+            <button type="button" data-model="fajr">الفجر</button>
+            <button type="button" data-model="layl">اللَّيل</button>
+            <button type="button" data-model="madina">المدينة</button>
+          </div>
+          <a class="btn solid" id="sr-link" href="../products/sahara.html">صفحة القطعة الكاملة</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="join">
     <div class="wrap reveal">
       <div class="badge-row"><span class="badge">✦ عودة محدودة القطع ✦</span></div>
@@ -182,5 +213,6 @@
 </div>
 
 <script src="../assets/js/main.js" defer></script>
+<script type="module" src="../assets/js/showroom.js"></script>
 </body>
 </html>
