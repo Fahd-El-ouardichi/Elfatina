@@ -106,10 +106,11 @@ function init() {
   mannequin.position.y = 0.16;
   scene.add(mannequin);
 
-  // Slim A-line silhouette (~170cm), smoothed with a spline
+  // Slim A-line silhouette (~170cm), smoothed with a spline.
+  // Shoulders slope down naturally — no square shelf at the top.
   const RAW = [
     [0.52, 0.0], [0.51, 0.06], [0.4, 0.9], [0.34, 1.55],
-    [0.37, 2.05], [0.4, 2.32], [0.24, 2.52], [0.15, 2.62],
+    [0.365, 2.0], [0.37, 2.2], [0.31, 2.38], [0.2, 2.5], [0.12, 2.6],
   ];
   const spline = new THREE.CatmullRomCurve3(RAW.map(([r, y]) => new THREE.Vector3(r, y, 0)));
   const profilePts = spline.getPoints(48).map((p) => new THREE.Vector2(Math.max(p.x, 0.001), p.y));
@@ -181,29 +182,46 @@ function init() {
 
     // Sleeves + hands
     [-1, 1].forEach((s) => {
-      const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.085, 0.95, 24), fabric);
-      sleeve.position.set(s * 0.44, 1.88, 0.09);
-      sleeve.rotation.z = s * 0.2;
-      sleeve.rotation.x = -0.1;
+      // arms hang close to the body, slight natural bend forward
+      const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.08, 1.05, 24), fabric);
+      sleeve.position.set(s * 0.37, 1.8, 0.07);
+      sleeve.rotation.z = s * 0.11;
+      sleeve.rotation.x = -0.06;
       sleeve.castShadow = true;
       mannequin.add(sleeve);
-      const hand = new THREE.Mesh(new THREE.SphereGeometry(0.058, 16, 12), SKIN);
-      hand.position.set(s * 0.55, 1.44, 0.14);
+      const hand = new THREE.Mesh(new THREE.SphereGeometry(0.052, 16, 12), SKIN);
+      hand.scale.set(0.85, 1.25, 0.7);
+      hand.position.set(s * 0.43, 1.24, 0.12);
       mannequin.add(hand);
     });
 
-    // Head + hijab
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 24, 18), SKIN);
-    head.scale.set(0.92, 1.12, 0.98);
-    head.position.set(0, 2.85, 0.015);
+    // Head + wrapped hijab: face visible in front, scarf covering the rest
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.145, 24, 18), SKIN);
+    head.scale.set(0.9, 1.12, 0.95);
+    head.position.set(0, 2.82, 0.03);
     mannequin.add(head);
-    const hijab = new THREE.Mesh(new THREE.SphereGeometry(0.19, 24, 18), hijabMat);
-    hijab.position.set(0, 2.88, -0.03);
-    hijab.scale.set(0.96, 1.1, 1);
+    // scarf shell sits behind/over the head, leaving the face open
+    const hijab = new THREE.Mesh(
+      new THREE.SphereGeometry(0.175, 24, 18, Math.PI * 0.65, Math.PI * 1.7),
+      hijabMat
+    );
+    hijab.position.set(0, 2.84, -0.005);
+    hijab.scale.set(0.98, 1.14, 1.02);
     hijab.castShadow = true;
     mannequin.add(hijab);
-    const drape = new THREE.Mesh(new THREE.ConeGeometry(0.21, 0.65, 24, 1, true), hijabMat);
-    drape.position.set(0, 2.52, -0.1);
+    // wrapped fold framing the face
+    const frame = new THREE.Mesh(new THREE.TorusGeometry(0.125, 0.026, 12, 40), hijabMat);
+    frame.position.set(0, 2.83, 0.1);
+    frame.rotation.x = -0.12;
+    mannequin.add(frame);
+    // under-chin wrap
+    const chin = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.03, 10, 32, Math.PI), hijabMat);
+    chin.position.set(0, 2.72, 0.06);
+    chin.rotation.x = Math.PI / 2.4;
+    chin.rotation.z = Math.PI;
+    mannequin.add(chin);
+    const drape = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.72, 24, 1, true), hijabMat);
+    drape.position.set(0, 2.48, -0.11);
     drape.rotation.x = 0.14;
     mannequin.add(drape);
 

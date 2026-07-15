@@ -2,39 +2,39 @@
    ELFATINA الفاتنة — shared stylesheet
    ============================================================ */
 :root{
-  --ink:#33230F;
-  --ink-soft:#6E5233;
-  --ground:#F6E8CE;
-  --ground-2:#EFD9AF;
-  --panel:#FDF3E0;
-  --gold:#B07E2E;
-  --gold-bright:#D49A3A;
-  --wine:#8A2F42;
-  --wine-deep:#6E2434;
-  --line:rgba(140,95,40,.3);
-  --shadow:rgba(110,60,20,.22);
-  --glow:rgba(212,154,58,.3);
+  --ink:#463129;
+  --ink-soft:#8A685C;
+  --ground:#F9F0E4;
+  --ground-2:#F1DFD2;
+  --panel:#FDF8F1;
+  --gold:#B08558;
+  --gold-bright:#CBA06E;
+  --wine:#B05E6E;
+  --wine-deep:#8E4652;
+  --line:rgba(160,110,95,.3);
+  --shadow:rgba(130,80,70,.2);
+  --glow:rgba(196,120,130,.24);
   --lamp:#FFD98A;
   --scene-bg:#241A10;
-  --sheet-a:#F2E3C4;
-  --sheet-b:#DFC79A;
+  --sheet-a:#F6E9DA;
+  --sheet-b:#E6CFBE;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --ink:#F4E6C8;
-    --ink-soft:#C9AF85;
-    --ground:#1A1009;
-    --ground-2:#2A1B0D;
-    --panel:#281A0E;
-    --gold:#D49A3A;
-    --gold-bright:#F0BC5E;
-    --wine:#C25B72;
-    --wine-deep:#A8465C;
-    --line:rgba(212,160,90,.32);
+    --ink:#F2E4DA;
+    --ink-soft:#C7A99C;
+    --ground:#201216;
+    --ground-2:#2E1B20;
+    --panel:#2A181D;
+    --gold:#C89A6E;
+    --gold-bright:#E0B888;
+    --wine:#D98A9A;
+    --wine-deep:#C06E80;
+    --line:rgba(210,150,140,.3);
     --shadow:rgba(0,0,0,.55);
-    --glow:rgba(240,188,94,.22);
-    --sheet-a:#3E2E19;
-    --sheet-b:#2D2010;
+    --glow:rgba(217,138,154,.2);
+    --sheet-a:#3E262C;
+    --sheet-b:#2C1A1F;
   }
 }
 
@@ -595,3 +595,32 @@ footer.site a:hover{color:var(--gold)}
 /* pedal keeps the stitching rhythm */
 .pedal{animation:pedal .76s ease-in-out infinite;transform-origin:188px 208px}
 @keyframes pedal{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-2deg) translateY(1.4px)}}
+
+/* ===== Vintage floral theme layer ===== */
+body{
+  background-image:url("../img/floral-tile.svg");
+  background-size:300px;
+  background-attachment:fixed;
+  background-color:var(--ground);
+}
+.hero{
+  background:
+    radial-gradient(48% 42% at 50% 30%, var(--glow), transparent 78%),
+    color-mix(in srgb, var(--ground) 62%, transparent);
+}
+section.block{background:color-mix(in srgb, var(--ground) 74%, transparent)}
+section.block.tinted{background:color-mix(in srgb, var(--ground-2) 80%, transparent)}
+.page-head{background:color-mix(in srgb, var(--ground) 66%, transparent)}
+.join{
+  background:
+    radial-gradient(50% 55% at 50% 100%, var(--glow), transparent 80%),
+    color-mix(in srgb, var(--ground-2) 82%, transparent);
+}
+.values-band{background:color-mix(in srgb, var(--ground) 82%, transparent)}
+footer.site{background:color-mix(in srgb, var(--ground-2) 92%, transparent)}
+@media (prefers-color-scheme: dark){
+  body{background-size:340px}
+  section.block{background:color-mix(in srgb, var(--ground) 86%, transparent)}
+  .hero{background:radial-gradient(48% 42% at 50% 30%, var(--glow), transparent 78%), color-mix(in srgb, var(--ground) 82%, transparent)}
+  .page-head{background:color-mix(in srgb, var(--ground) 84%, transparent)}
+}

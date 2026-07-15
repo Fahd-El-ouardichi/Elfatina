@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <g id="rose">
+      <ellipse cx="0" cy="-6" rx="4.2" ry="6" fill="#C4707F"/>
+      <ellipse cx="5.7" cy="-1.9" rx="4.2" ry="6" fill="#C97D8B" transform="rotate(72)"/>
+      <ellipse cx="3.5" cy="4.9" rx="4.2" ry="6" fill="#BE6A79" transform="rotate(144)"/>
+      <ellipse cx="-3.5" cy="4.9" rx="4.2" ry="6" fill="#C97D8B" transform="rotate(216)"/>
+      <ellipse cx="-5.7" cy="-1.9" rx="4.2" ry="6" fill="#C4707F" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="3" fill="#9E4A5C"/>
+      <circle cx="0" cy="0" r="1.2" fill="#E8C9B8"/>
+    </g>
+    <g id="bud">
+      <ellipse cx="0" cy="0" rx="2.6" ry="3.8" fill="#B05E6E"/>
+      <path d="M-2 2 Q0 5 2 2" stroke="#8E9F7C" stroke-width="1.2" fill="none"/>
+    </g>
+    <g id="leaf">
+      <ellipse cx="0" cy="0" rx="2.6" ry="6.5" fill="#9AA985"/>
+      <line x1="0" y1="-5" x2="0" y2="5" stroke="#7E8F6E" stroke-width=".7"/>
+    </g>
+    <g id="sprig">
+      <path d="M0 0 q6 -14 4 -30" stroke="#A98D72" stroke-width="1.1" fill="none"/>
+      <use href="#leaf" transform="translate(2.5,-10) rotate(40)"/>
+      <use href="#leaf" transform="translate(4.5,-20) rotate(-35)"/>
+      <use href="#bud" transform="translate(4,-31)"/>
+    </g>
+  </defs>
+  <g opacity=".5">
+    <use href="#sprig" transform="translate(38,88) rotate(12)"/>
+    <use href="#rose" transform="translate(46,52) scale(1.25)"/>
+    <use href="#rose" transform="translate(60,66) scale(.8) rotate(30)"/>
+    <use href="#leaf" transform="translate(33,62) rotate(-50)"/>
+    <use href="#leaf" transform="translate(58,44) rotate(70)"/>
+
+    <use href="#sprig" transform="translate(168,200) rotate(-160)"/>
+    <use href="#rose" transform="translate(160,220) scale(1.05) rotate(15)"/>
+    <use href="#leaf" transform="translate(174,212) rotate(35)"/>
+
+    <use href="#sprig" transform="translate(190,70) rotate(150)"/>
+    <use href="#rose" transform="translate(196,92) scale(.9) rotate(-20)"/>
+    <use href="#bud" transform="translate(178,80) rotate(20)"/>
+    <use href="#leaf" transform="translate(206,80) rotate(-60)"/>
+
+    <use href="#sprig" transform="translate(80,178) rotate(-15)"/>
+    <use href="#rose" transform="translate(72,150) scale(.75) rotate(45)"/>
+    <use href="#bud" transform="translate(90,162) rotate(-30)"/>
+
+    <use href="#bud" transform="translate(126,36) rotate(15)"/>
+    <use href="#leaf" transform="translate(118,44) rotate(55)"/>
+    <use href="#bud" transform="translate(18,208) rotate(-20)"/>
+    <use href="#leaf" transform="translate(28,216) rotate(30)"/>
+    <use href="#bud" transform="translate(226,150) rotate(40)"/>
+    <use href="#leaf" transform="translate(120,120) rotate(-40)"/>
+    <use href="#bud" transform="translate(110,128) rotate(10)"/>
+  </g>
+</svg>
