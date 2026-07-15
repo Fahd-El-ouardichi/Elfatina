@@ -19,24 +19,6 @@
   --sheet-a:#F6E9DA;
   --sheet-b:#E6CFBE;
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --ink:#F2E4DA;
-    --ink-soft:#C7A99C;
-    --ground:#201216;
-    --ground-2:#2E1B20;
-    --panel:#2A181D;
-    --gold:#C89A6E;
-    --gold-bright:#E0B888;
-    --wine:#D98A9A;
-    --wine-deep:#C06E80;
-    --line:rgba(210,150,140,.3);
-    --shadow:rgba(0,0,0,.55);
-    --glow:rgba(217,138,154,.2);
-    --sheet-a:#3E262C;
-    --sheet-b:#2C1A1F;
-  }
-}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
