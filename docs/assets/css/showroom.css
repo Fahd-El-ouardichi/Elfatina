@@ -28,7 +28,7 @@
 .showroom-side p{color:var(--ink-soft);font-size:1.12rem;margin-top:14px;max-width:40ch}
 .showroom-chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
 .showroom-chips button{
-  font-family:"Sakkal Majalla","Segoe UI",sans-serif;font-size:1.05rem;
+  font-family:"El Messiri","Sakkal Majalla","Segoe UI",sans-serif;font-size:1.05rem;
   padding:8px 24px;border-radius:99px;cursor:pointer;
   border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);
   transition:border-color .3s,color .3s,background .3s,transform .3s;

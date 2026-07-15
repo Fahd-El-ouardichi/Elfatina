@@ -52,7 +52,7 @@ function init() {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(33, 1, 0.1, 50);
-  camera.position.set(0, 1.75, 6.6);
+  camera.position.set(0, 1.7, 5.9);
   camera.lookAt(0, 1.55, 0);
 
   // Boutique lighting: warm key spot (the atelier lamp), soft fill, gold rim
@@ -72,14 +72,14 @@ function init() {
   // Golden podium
   const podium = new THREE.Group();
   const disc = new THREE.Mesh(
-    new THREE.CylinderGeometry(1.75, 1.85, 0.16, 64),
+    new THREE.CylinderGeometry(1.05, 1.12, 0.16, 64),
     new THREE.MeshStandardMaterial({ color: 0xb07e2e, metalness: 0.75, roughness: 0.3 })
   );
   disc.position.y = 0.08;
   disc.receiveShadow = true;
   podium.add(disc);
   const base = new THREE.Mesh(
-    new THREE.CylinderGeometry(2.05, 2.15, 0.1, 64),
+    new THREE.CylinderGeometry(1.3, 1.38, 0.1, 64),
     new THREE.MeshStandardMaterial({ color: 0x3a2611, metalness: 0.4, roughness: 0.6 })
   );
   base.position.y = -0.05;
@@ -91,10 +91,11 @@ function init() {
   mannequin.position.y = 0.16;
   scene.add(mannequin);
 
-  // Abaya silhouette profile: radius at each height (hem → neck)
+  // Abaya silhouette profile: radius at each height (hem → neck).
+  // Real-world proportions (~170cm woman): slim A-line, hem ≈ shoulder width.
   const PROFILE = [
-    [1.0, 0.0], [0.97, 0.06], [0.62, 0.9], [0.46, 1.55],
-    [0.48, 2.0], [0.52, 2.28], [0.36, 2.5], [0.29, 2.6],
+    [0.52, 0.0], [0.51, 0.06], [0.4, 0.9], [0.34, 1.55],
+    [0.37, 2.05], [0.4, 2.32], [0.24, 2.52], [0.15, 2.62],
   ];
   const profilePts = PROFILE.map(([r, y]) => new THREE.Vector2(r, y));
   function radiusAt(y) {
@@ -102,7 +103,7 @@ function init() {
       const [r1, y1] = PROFILE[i], [r2, y2] = PROFILE[i + 1];
       if (y >= y1 && y <= y2) return r1 + ((y - y1) / (y2 - y1)) * (r2 - r1);
     }
-    return 0.29;
+    return 0.15;
   }
 
   const SKIN = new THREE.MeshStandardMaterial({ color: 0xdca87e, roughness: 0.75 });
@@ -140,36 +141,37 @@ function init() {
 
     // Sleeves + hands
     [-1, 1].forEach((s) => {
-      const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.13, 1.05, 20), fabric);
-      sleeve.position.set(s * 0.62, 1.85, 0.12);
-      sleeve.rotation.z = s * 0.42;
-      sleeve.rotation.x = -0.12;
+      const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.085, 0.95, 20), fabric);
+      sleeve.position.set(s * 0.44, 1.88, 0.09);
+      sleeve.rotation.z = s * 0.2;
+      sleeve.rotation.x = -0.1;
       sleeve.castShadow = true;
       mannequin.add(sleeve);
-      const hand = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 12), SKIN);
-      hand.position.set(s * 0.82, 1.34, 0.18);
+      const hand = new THREE.Mesh(new THREE.SphereGeometry(0.058, 16, 12), SKIN);
+      hand.position.set(s * 0.55, 1.44, 0.14);
       mannequin.add(hand);
     });
 
     // Head + hijab
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.225, 24, 18), SKIN);
-    head.position.y = 2.82;
-    head.position.z = 0.02;
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.16, 24, 18), SKIN);
+    head.scale.set(0.92, 1.12, 0.98); // oval face, not a ball
+    head.position.y = 2.85;
+    head.position.z = 0.015;
     mannequin.add(head);
-    const hijab = new THREE.Mesh(new THREE.SphereGeometry(0.265, 24, 18), hijabMat);
-    hijab.position.y = 2.85;
-    hijab.position.z = -0.045;
-    hijab.scale.set(1, 1.06, 1);
+    const hijab = new THREE.Mesh(new THREE.SphereGeometry(0.19, 24, 18), hijabMat);
+    hijab.position.y = 2.88;
+    hijab.position.z = -0.03;
+    hijab.scale.set(0.96, 1.1, 1);
     hijab.castShadow = true;
     mannequin.add(hijab);
-    const drape = new THREE.Mesh(new THREE.ConeGeometry(0.3, 0.85, 20, 1, true), hijabMat);
-    drape.position.set(0, 2.45, -0.14);
-    drape.rotation.x = 0.16;
+    const drape = new THREE.Mesh(new THREE.ConeGeometry(0.21, 0.65, 20, 1, true), hijabMat);
+    drape.position.set(0, 2.52, -0.1);
+    drape.rotation.x = 0.14;
     mannequin.add(drape);
 
     if (cfg.hood) {
-      const hood = new THREE.Mesh(new THREE.ConeGeometry(0.36, 0.6, 20, 1, true), fabric);
-      hood.position.set(0, 2.78, -0.2);
+      const hood = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.48, 20, 1, true), fabric);
+      hood.position.set(0, 2.82, -0.15);
       hood.rotation.x = 0.55;
       mannequin.add(hood);
     }
@@ -177,21 +179,21 @@ function init() {
     // Gold front trim: beads following the silhouette down the front
     if (cfg.trim) {
       for (let i = 0; i <= 34; i++) {
-        const y = 0.06 + (2.5 - 0.06) * (i / 34);
-        const bead = new THREE.Mesh(new THREE.SphereGeometry(0.028, 8, 6), goldMat);
-        bead.position.set(0, y, radiusAt(y) + 0.012);
+        const y = 0.06 + (2.55 - 0.06) * (i / 34);
+        const bead = new THREE.Mesh(new THREE.SphereGeometry(0.02, 8, 6), goldMat);
+        bead.position.set(0, y, radiusAt(y) + 0.01);
         mannequin.add(bead);
       }
     }
     // Gold hem + neck rings
     if (cfg.hem) {
-      const hem = new THREE.Mesh(new THREE.TorusGeometry(0.985, 0.018, 10, 64), goldMat);
+      const hem = new THREE.Mesh(new THREE.TorusGeometry(0.505, 0.013, 10, 64), goldMat);
       hem.rotation.x = Math.PI / 2;
       hem.position.y = 0.05;
       mannequin.add(hem);
-      const neck = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.014, 8, 40), goldMat);
+      const neck = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.011, 8, 40), goldMat);
       neck.rotation.x = Math.PI / 2;
-      neck.position.y = 2.58;
+      neck.position.y = 2.6;
       mannequin.add(neck);
     }
     // Crystal sparkle on the chest (layl)
@@ -200,10 +202,10 @@ function init() {
         color: 0xffffff, emissive: 0xfff2cc, emissiveIntensity: 0.9, roughness: 0.15, metalness: 0.6,
       });
       for (let i = 0; i < 46; i++) {
-        const y = 1.75 + Math.random() * 0.75;
-        const a = (Math.random() - 0.5) * 1.5; // front hemisphere
-        const r = radiusAt(y) + 0.01;
-        const dot = new THREE.Mesh(new THREE.SphereGeometry(0.014 + Math.random() * 0.012, 6, 5), crystal);
+        const y = 1.9 + Math.random() * 0.6;
+        const a = (Math.random() - 0.5) * 1.1; // front of the chest
+        const r = radiusAt(y) + 0.008;
+        const dot = new THREE.Mesh(new THREE.SphereGeometry(0.01 + Math.random() * 0.009, 6, 5), crystal);
         dot.position.set(Math.sin(a) * r, y, Math.cos(a) * r);
         mannequin.add(dot);
       }
@@ -216,8 +218,8 @@ function init() {
       [-1, 1].forEach((s) => {
         for (let i = 0; i < 6; i++) {
           const t = i / 5;
-          const dot = new THREE.Mesh(new THREE.SphereGeometry(0.022, 8, 6), pearl);
-          dot.position.set(s * (0.66 + t * 0.14), 1.72 - t * 0.32, 0.24);
+          const dot = new THREE.Mesh(new THREE.SphereGeometry(0.016, 8, 6), pearl);
+          dot.position.set(s * (0.47 + t * 0.09), 1.78 - t * 0.3, 0.15);
           mannequin.add(dot);
         }
       });
