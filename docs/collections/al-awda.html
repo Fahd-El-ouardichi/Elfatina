@@ -140,31 +140,69 @@
   <section class="block tinted" id="showroom">
     <div class="wrap">
       <div class="sect-head reveal">
-        <span class="label ar">جديد · صالة العرض</span>
-        <h2 class="display">شاهديها تدور أمامكِ</h2>
-        <p>اختاري القطعة، واسحبي العارضة لتدور بها — كأنكِ داخل المحل.</p>
+        <span class="label ar">حصري · استوديو التصميم</span>
+        <h2 class="display">صمّمي عبايتكِ بنفسكِ</h2>
+        <p>الأولى من نوعها: اختاري القماش والحجاب والتطريز، دوّريها من كل الجهات وقرّبي التفاصيل — ثم احفظي تصميمكِ وأرسليه لنا لنخيطه لكِ.</p>
       </div>
       <div class="showroom reveal">
         <div class="stage-wrap">
-          <div id="stage3d" aria-label="عرض ثلاثي الأبعاد للعباية على عارضة تدور"></div>
-          <p class="drag-hint">✦ اسحبي بالفأرة أو بإصبعك لتدويرها ✦</p>
+          <div id="stage3d" aria-label="استوديو ثلاثي الأبعاد لتصميم العباية"></div>
+          <p class="drag-hint">✦ اسحبي للتدوير في كل الاتجاهات · قرّبي بالعجلة أو بإصبعيكِ ✦</p>
         </div>
         <div class="showroom-side">
           <span class="label ar">على العارضة الآن</span>
           <h3 class="display" id="sr-name">عباية الصحراء</h3>
           <p id="sr-desc">سوداء بامتداد الليل، يشقّها شريط ذهبي مطرز من العنق إلى الأرض.</p>
-          <div class="showroom-chips">
+          <div class="showroom-chips" id="sr-presets">
             <button type="button" data-model="sahara" class="on">الصحراء</button>
             <button type="button" data-model="sakina">السَّكِينة</button>
             <button type="button" data-model="fajr">الفجر</button>
             <button type="button" data-model="layl">اللَّيل</button>
             <button type="button" data-model="madina">المدينة</button>
           </div>
-          <a class="btn solid" id="sr-link" href="../products/sahara.html">صفحة القطعة الكاملة</a>
+          <div class="opt-group">
+            <span class="opt-label">قماش العباية</span>
+            <div class="swatches" id="sw-fabric">
+              <button type="button" data-c="#17110c" style="--c:#17110c" title="أسود"></button>
+              <button type="button" data-c="#1c2438" style="--c:#1c2438" title="كحلي"></button>
+              <button type="button" data-c="#5e1f30" style="--c:#5e1f30" title="عنّابي"></button>
+              <button type="button" data-c="#e6d5b8" style="--c:#e6d5b8" title="بيج"></button>
+              <button type="button" data-c="#cbb391" style="--c:#cbb391" title="رملي"></button>
+              <button type="button" data-c="#3e4a3a" style="--c:#3e4a3a" title="زيتي"></button>
+              <label class="custom-sw" title="لون من اختيارك"><input type="color" id="pick-fabric" value="#5e1f30">+</label>
+            </div>
+          </div>
+          <div class="opt-group">
+            <span class="opt-label">الحجاب</span>
+            <div class="swatches" id="sw-hijab">
+              <button type="button" data-c="#d9c8a9" style="--c:#d9c8a9" title="رملي"></button>
+              <button type="button" data-c="#0f0b08" style="--c:#0f0b08" title="أسود"></button>
+              <button type="button" data-c="#b09a78" style="--c:#b09a78" title="بني فاتح"></button>
+              <button type="button" data-c="#8a2f42" style="--c:#8a2f42" title="عنّابي"></button>
+              <button type="button" data-c="#f4ede0" style="--c:#f4ede0" title="عاجي"></button>
+              <label class="custom-sw" title="لون من اختيارك"><input type="color" id="pick-hijab" value="#d9c8a9">+</label>
+            </div>
+          </div>
+          <div class="opt-group">
+            <span class="opt-label">التطريز واللمسات</span>
+            <div class="showroom-chips small" id="sw-trim">
+              <button type="button" data-trim="gold" class="on">ذهبي</button>
+              <button type="button" data-trim="silver">فضي</button>
+              <button type="button" data-trim="pearl">لؤلؤي</button>
+              <button type="button" data-trim="none">بدون</button>
+              <button type="button" id="btn-crystals">✦ كريستال</button>
+            </div>
+          </div>
+          <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
+            <button class="btn solid" id="sr-save" type="button">احفظي تصميمكِ 📸</button>
+            <a class="btn" id="sr-link" href="../products/sahara.html">صفحة القطعة</a>
+          </div>
+          <p class="drag-hint" style="text-align:right;margin-top:14px">أرسلي صورة تصميمكِ عبر إنستغرام أو البريد — ونخيطها لكِ قطعةً واحدة، لكِ وحدكِ.</p>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="join">
     <div class="wrap reveal">
@@ -213,6 +251,7 @@
 </div>
 
 <script src="../assets/js/main.js" defer></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module" src="../assets/js/showroom.js"></script>
 </body>
 </html>
