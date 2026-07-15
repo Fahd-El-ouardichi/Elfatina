@@ -600,9 +600,3 @@ section.block.tinted{background:color-mix(in srgb, var(--ground-2) 80%, transpar
 }
 .values-band{background:color-mix(in srgb, var(--ground) 82%, transparent)}
 footer.site{background:color-mix(in srgb, var(--ground-2) 92%, transparent)}
-@media (prefers-color-scheme: dark){
-  body{background-size:340px}
-  section.block{background:color-mix(in srgb, var(--ground) 86%, transparent)}
-  .hero{background:radial-gradient(48% 42% at 50% 30%, var(--glow), transparent 78%), color-mix(in srgb, var(--ground) 82%, transparent)}
-  .page-head{background:color-mix(in srgb, var(--ground) 84%, transparent)}
-}
